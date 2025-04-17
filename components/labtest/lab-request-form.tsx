@@ -22,7 +22,6 @@ import {
 import { PatientInfoSection } from "./patient-info-form";
 import { TestDetailsSection } from "./test-details-form";
 import { useRouter } from "next/navigation";
-
 export const LabRequestForm = ({
   patient,
   medicalRecords,
@@ -56,11 +55,11 @@ export const LabRequestForm = ({
 
       const res = await addLabRequest(values);
       router.refresh();
-      toast.success("La solicitud de prueba de laboratorio se ha enviado correctamente.");
+      toast.success("The lab test request has been submitted successfully.");
       form.reset();
     } catch (error) {
       console.log(error);
-      toast.error("Algo salió mal. Inténtalo de nuevo.");
+      toast.error("Something went wrong. Please try again.");
     } finally {
       setIsLoading(false);
     }
@@ -73,7 +72,7 @@ export const LabRequestForm = ({
       patientName: patient?.first_name + " " + patient?.last_name,
       patientId: patient.id,
       age: AGE,
-      gender: patient.gender.toLowerCase()! as "masculino" | "femenino",
+      gender: patient.gender.toLowerCase()! as "male" | "female",
       testTypes: [],
       priority: undefined,
       requestDate: new Date().toISOString().split("T")[0],
@@ -84,11 +83,11 @@ export const LabRequestForm = ({
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button>Solicitud de prueba</Button>
+        <Button>Test Request</Button>
       </DialogTrigger>
       <DialogContent className="p-6">
         <DialogHeader>
-          <DialogTitle>Nueva solicitud de prueba de laboratorio</DialogTitle>
+          <DialogTitle>New Lab Test Request</DialogTitle>
         </DialogHeader>
         <Card>
           <Form {...form}>
@@ -96,7 +95,7 @@ export const LabRequestForm = ({
               <PatientInfoSection form={form} data={medicalRecords} />
               <TestDetailsSection form={form} data={availableTest} />
               <Button disabled={isLoading} type="submit" className="w-full">
-                Enviar solicitud
+                Submit Request
               </Button>
             </form>
           </Form>
@@ -105,3 +104,88 @@ export const LabRequestForm = ({
     </Dialog>
   );
 };
+
+// export const LabRequestForm = ({
+//   patient,
+//   medicalRecords,
+//   availableTest,
+// }: {
+//   patient: Patient;
+//   medicalRecords: MedicalRecords[];
+//   availableTest: { id: number; name: string }[];
+// }) => {
+//   const router = useRouter();
+//   const form = useForm<z.infer<typeof LabRequestSchema>>({
+//     resolver: zodResolver(LabRequestSchema),
+//     defaultValues: {
+//       recordId: "",
+//       patientName: "",
+//       patientId: "",
+//       age: "",
+//       gender: undefined,
+//       testTypes: [],
+//       priority: undefined,
+//       requestDate: new Date().toISOString().split("T")[0],
+//       specialInstructions: "",
+//     },
+//   });
+
+//   const [isLoading, setIsLoading] = useState(false);
+
+//   async function onSubmit(values: z.infer<typeof LabRequestSchema>) {
+//     try {
+//       setIsLoading(true);
+
+//       const res = await addLabRequest(values);
+//       router.refresh();
+//       toast.success(
+//         "La solicitud de prueba de laboratorio se ha enviado correctamente."
+//       );
+//       form.reset();
+//     } catch (error) {
+//       console.log(error);
+//       toast.error("Algo salió mal. Inténtalo de nuevo.");
+//     } finally {
+//       setIsLoading(false);
+//     }
+//   }
+
+//   // useEffect(() => {
+//   //   const AGE = calculateAge(patient.date_of_birth);
+
+//   //   form.reset({
+//   //     patientName: patient?.first_name + " " + patient?.last_name,
+//   //     patientId: patient.id,
+//   //     age: AGE,
+//   //     gender: patient.gender.toLowerCase()! as "masculino" | "femenino",
+//   //     testTypes: [],
+//   //     priority: undefined,
+//   //     requestDate: new Date().toISOString().split("T")[0],
+//   //     specialInstructions: "",
+//   //   });
+//   // }, [patient]);
+
+//   return (
+//     <Dialog>
+//       <DialogTrigger asChild>
+//         <Button>Solicitud de prueba</Button>
+//       </DialogTrigger>
+//       <DialogContent className="p-6">
+//         <DialogHeader>
+//           <DialogTitle>Nueva solicitud de prueba de laboratorio</DialogTitle>
+//         </DialogHeader>
+//         <Card>
+//           <Form {...form}>
+//             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+//               <PatientInfoSection form={form} data={medicalRecords} />
+//               <TestDetailsSection form={form} data={availableTest} />
+//               <Button disabled={isLoading} type="submit" className="w-full">
+//                 Enviar solicitud
+//               </Button>
+//             </form>
+//           </Form>
+//         </Card>
+//       </DialogContent>
+//     </Dialog>
+//   );
+// };

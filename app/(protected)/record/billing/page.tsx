@@ -25,17 +25,17 @@ const columns = [
     key: "id",
   },
   {
-    header: "Patient",
+    header: "Paciente",
     key: "info",
     className: "",
   },
   {
-    header: "Contact",
+    header: "Contacto",
     key: "phone",
     className: "hidden md:table-cell",
   },
   {
-    header: "Bill Date",
+    header: "Fecha Factura",
     key: "bill_date",
     className: "hidden md:table-cell",
   },
@@ -45,27 +45,27 @@ const columns = [
     className: "hidden xl:table-cell",
   },
   {
-    header: "Discount",
+    header: "Descuento",
     key: "discount",
     className: "hidden xl:table-cell",
   },
   {
-    header: "Payable",
+    header: "Pagable",
     key: "payable",
     className: "hidden xl:table-cell",
   },
   {
-    header: "Paid",
+    header: "Pago",
     key: "paid",
     className: "hidden xl:table-cell",
   },
   {
-    header: "Status",
+    header: "Estado",
     key: "status",
     className: "hidden xl:table-cell",
   },
   {
-    header: "Actions",
+    header: "Acción",
     key: "action",
   },
 ];

@@ -1,7 +1,7 @@
 "use server";
 
 import { redirect } from "next/navigation";
-
+import { Department } from "@prisma/client";
 import db from "@/lib/db";
 import { ServicesSchema } from "@/lib/schema";
 import { isAuthenticatedUser } from "@/utils/is-authenticated";
@@ -24,7 +24,7 @@ export async function addNewService(data: any) {
         ...validatedData!,
         price: Number(data.price),
         tat: Number(data.tat),
-        department: data?.department,
+        department: Department[data.department as keyof typeof Department],
       },
     });
 

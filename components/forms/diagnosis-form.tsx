@@ -1,5 +1,5 @@
 "use client";
-
+import React, { Fragment } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Plus, Trash2 } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -235,7 +235,7 @@ export function DiagnosisForm({
           </div>
 
           {fields.map((field, index) => (
-            <>
+            <Fragment key={field.id}>
               <div
                 key={field.id}
                 className="grid grid-cols-4 gap-4 p-4 border rounded-md mt-10"
@@ -264,8 +264,8 @@ export function DiagnosisForm({
                             //     `drugs.${index}.maxQuantity`,
                             //     selectedDrug.quantity
                             //   );
-                          }
-                        }}
+                          
+                          }}}
                       >
                         <SelectTrigger>
                           <SelectValue placeholder="Seleccionar medicamento" />
@@ -334,7 +334,7 @@ export function DiagnosisForm({
                   </Button>
                 )}
               </div>
-            </>
+            </Fragment>
           ))}
         </div>
 
