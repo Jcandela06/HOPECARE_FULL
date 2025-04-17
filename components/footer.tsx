@@ -7,7 +7,7 @@ export const Footer = () => {
         <div>
           <h3 className="text-white font-bold mb-4">HOPECARE</h3>
           <p className="text-sm">
-          "Uniendo conocimiento y corazón en el cuidado de la glucogenosis."
+            "Uniendo conocimiento y corazón en el cuidado de la glucogenosis."
           </p>
         </div>
         <div>
@@ -64,20 +64,23 @@ export const Footer = () => {
           <h4 className="text-white font-semibold mb-4">Legal</h4>
           <ul className="space-y-2">
             <li>
-              <Link
-                href="/privacy"
+              <a
+                href="/politicas-y-privacidad.pdf"
+                download
                 className="hover:text-white transition-colors"
               >
-                Politica y Privacidad
-              </Link>
+                Política y Privacidad
+              </a>
             </li>
+
             <li>
-              <Link
-                href="/terms"
+              <a
+                href="/terminos-y-condiciones.pdf"
+                download
                 className="hover:text-white transition-colors"
               >
-                Terminos y Condiciones
-              </Link>
+                Términos y Condiciones
+              </a>
             </li>
           </ul>
         </div>
