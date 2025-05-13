@@ -1,13 +1,28 @@
 import db from "@/lib/db";
 import { calculateDiscount, formatDate, formatNumberToCurrency } from "@/utils";
-import { checkRole } from "@/utils/roles";
 import { PatientBills } from "@prisma/client";
 import { ReceiptText } from "lucide-react";
-import ActionDialog from "./dialogs/action-dialog";
 import { AddBills } from "./dialogs/add-bills";
 import { GenerateFinalBills } from "./dialogs/generate-final-bill";
-import { Table } from "./tables/table";
 import { SelectSeparator } from "./ui/select";
+import ActionDialog from "@/components/dialogs/action-dialog";
+import { ViewPaymentDetails } from "@/components/dialogs/view-payment-details";
+import { Pagination } from "@/components/pagination";
+import { ProfileImage } from "@/components/profile-image";
+import SearchInput from "@/components/search-input";
+import { Table } from "@/components/tables/table";
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { cn } from "@/lib/utils";
+import { SearchParamsProps } from "@/types";
+import { checkRole, getRole } from "@/utils/roles";
+import { getPaymentRecords } from "@/utils/services/bills";
+import { DATA_LIMIT } from "@/utils/settings";
+import { Payment, PaymentDetails } from "@prisma/client";
+import { PayBillDialog } from "@/components/dialogs/pay-bill-dialog";
+import { ViewAction } from "@/components/action-options";
+
+
 
 const columns = [
   {
@@ -104,6 +119,33 @@ export const BillsContainer = async ({ id }: BillProps) => {
           deleteType="bill"
         />
       </td>
+
+      <td className="">
+          <div className="flex items-center">
+            <ViewAction
+              href={`appointments/${item?.id}?cat=bills`}
+              disabled={
+                false
+              }
+            />
+            <PayBillDialog
+              paymentId={item?.payment_id}
+              maxAmount={item?.total_cost}
+              disabled={
+                false
+              }
+            />
+
+            { (
+              <ActionDialog
+                type="delete"
+                deleteType="payment"
+                id={item?.id.toString()}
+              />
+            )}
+          </div>
+        </td>
+
     </tr>
   );
 

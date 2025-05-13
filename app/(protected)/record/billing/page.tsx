@@ -18,6 +18,7 @@ import { checkRole, getRole } from "@/utils/roles";
 import { getPaymentRecords } from "@/utils/services/bills";
 import { DATA_LIMIT } from "@/utils/settings";
 import { Payment, PaymentDetails } from "@prisma/client";
+import { PayBillDialog } from "@/components/dialogs/pay-bill-dialog";
 
 const columns = [
   {
@@ -160,18 +161,16 @@ const BillingRecords = async (props: SearchParamsProps) => {
             <ViewAction
               href={`appointments/${item?.appointment_id}?cat=bills`}
               disabled={
-                userRole === "admin" ? false : userId !== item?.patient_id
+                false
               }
             />
-            <Button
-              disabled={item?.patient_id !== userId || userRole !== "cashier"}
-              variant="ghost"
-              className="flex items-center gap-2 justify-start  text-gray-600 text-sm font-light"
-            >
-              Pagar
-            </Button>
+            <PayBillDialog
+              paymentId={item.id}
+              maxAmount={item.total_amount - item.discount - item.amount_paid}
+              disabled={item.patient_id !== userId || userRole !== "cashier"}
+            />
 
-            {isAdmin && (
+            { (
               <ActionDialog
                 type="delete"
                 deleteType="payment"
@@ -191,7 +190,7 @@ const BillingRecords = async (props: SearchParamsProps) => {
           <ReceiptText size={20} className="text-gray-500" />
           <p className="text-2xl font-semibold">{totalRecord ?? 0}</p>
           <span className="text-gray-600 text-sm xl:text-base">
-          registros totales
+            registros totales
           </span>
         </div>
 
