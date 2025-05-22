@@ -21,9 +21,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Healthcare Management System",
+  title: "HopeCare Sistema Medico",
   description:
-    "A robust system for patient management systems that provides patient information about patient organizations and services.",
+    "Un sistema robusto para sistemas de gestión de pacientes que proporciona información a los pacientes sobre organizaciones y servicios para pacientes.",
 };
 
 // Generar parámetros para rutas estáticas con idiomas
