@@ -49,7 +49,7 @@ const HomePage = async () => {
               <div className="flex gap-4">
                 {userId ? (
                   <Button asChild>
-                    <Link href={"/patient"}>View Dashboard</Link>
+                    <Link href={"/patient"}>Ver Dashboard</Link>
                   </Button>
                 ) : (
                   <>

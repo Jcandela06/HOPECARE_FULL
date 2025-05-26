@@ -13,7 +13,7 @@ export async function addNewService(data: any) {
     if (!session) redirect("/sign-in");
 
     if (session?.role !== "ADMIN" && session?.role !== "LABORATORY")
-      return { success: false, error: true, message: "Unauthorized access" };
+      return { success: false, error: true, message: "Acceso no autorizado" };
 
     const isValidData = ServicesSchema.safeParse(data);
 

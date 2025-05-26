@@ -10,6 +10,7 @@ export const PublicNavbar = () => {
         <LogoLink />
 
         <div className="hidden md:flex items-center gap-2 lg:gap-4">
+          <Link href={"/"}>Inicio </Link>
           <Link href={"/about"}>Nosotros</Link>
           <Link href={"/features"}>Características</Link>
           <Link href={"/contact"}>Contactanos</Link>

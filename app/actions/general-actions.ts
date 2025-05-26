@@ -117,7 +117,7 @@ export const checkAndAddNewUser = async () => {
     const user = await currentUser();
 
     if (!user) {
-      return { message: "Unauthorized user" };
+      return { message: "Usuario no autorizado" };
     }
 
     const userExist = await db.user.findUnique({

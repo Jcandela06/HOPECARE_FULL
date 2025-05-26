@@ -158,12 +158,12 @@ export const Sidebar = async () => {
           access: ["patient"],
           icon: List,
         },
-        {
+        /*{
           name: "Prescripción",
-          href: "#",
+          href: "/patient/self#",
           access: ["patient"],
           icon: Pill,
-        },
+        },*/
         {
           name: "Facturación",
           href: "/patient/self?cat=payments",

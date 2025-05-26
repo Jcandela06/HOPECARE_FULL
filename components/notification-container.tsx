@@ -27,15 +27,15 @@ import { Card } from "./ui/card";
 
 export const NotificationContainer = ({ data }: { data: Notification[] }) => {
   const router = useRouter();
-  const [filter, setFilter] = useState<"all" | "read" | "unread">("all");
+  const [filter, setFilter] = useState<"Todo" | "Leído" | "No leído">("Todo");
   const [notifications, setNotifications] = useState<Notification[]>(data);
   const [selectedNotification, setSelectedNotification] =
     useState<Notification | null>(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   const filteredNotifications = notifications.filter((notification) => {
-    if (filter === "read") return notification?.isRead;
-    if (filter === "unread") return !notification?.isRead;
+    if (filter === "Leído") return notification?.isRead;
+    if (filter === "No leído") return !notification?.isRead;
     return true;
   });
 
@@ -67,22 +67,22 @@ export const NotificationContainer = ({ data }: { data: Notification[] }) => {
           </div>
           <div className="flex gap-2">
             <Button
-              variant={filter === "all" ? "default" : "outline"}
-              onClick={() => setFilter("all")}
+              variant={filter === "Todo" ? "default" : "outline"}
+              onClick={() => setFilter("Todo")}
               className="text-xs md:text-sm"
             >
               Todo
             </Button>
             <Button
-              variant={filter === "unread" ? "default" : "outline"}
-              onClick={() => setFilter("unread")}
+              variant={filter === "No leído" ? "default" : "outline"}
+              onClick={() => setFilter("No leído")}
               className="text-xs md:text-sm"
             >
               No leído
             </Button>
             <Button
-              variant={filter === "read" ? "default" : "outline"}
-              onClick={() => setFilter("read")}
+              variant={filter === "Leído" ? "default" : "outline"}
+              onClick={() => setFilter("Leído")}
               className="text-xs md:text-sm"
             >
               Leído
@@ -126,7 +126,7 @@ export const NotificationContainer = ({ data }: { data: Notification[] }) => {
                           : "bg-blue-100 text-blue-800"
                       }`}
                     >
-                      {notification?.isRead ? "Read" : "Unread"}
+                      {notification?.isRead ? "Leído" : "No Leído"}
                     </span>
                   </TableCell>
                 </TableRow>
