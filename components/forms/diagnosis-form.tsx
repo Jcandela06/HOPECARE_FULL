@@ -149,7 +149,7 @@ export function DiagnosisForm({
               <FormItem>
                 <FormLabel>Doctor ID</FormLabel>
                 <FormControl>
-                  <Input {...field} readOnly />
+                  <Input {...field} className="hidden" readOnly />
                 </FormControl>
                 <FormMessage />
               </FormItem>

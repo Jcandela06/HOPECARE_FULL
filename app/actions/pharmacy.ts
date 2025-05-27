@@ -258,7 +258,7 @@ export async function issueDrugs(data: {
 
     const { userId, role } = await isAuthenticatedUser();
 
-    if (role !== "PHARMACY") {
+    if (role !== "PHARMACY" && role !== "ADMIN") {
       throw new Error("Unauthorized");
     }
 

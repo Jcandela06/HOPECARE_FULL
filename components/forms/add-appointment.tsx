@@ -40,12 +40,11 @@ import {
 } from "../ui/select";
 
 export const APPOINTMENT_TYPES = [
-  { label: "General Consultation", value: "General Consultation" },
-  { label: "General Check up", value: "General Check Up" },
-  { label: "Antenatal", value: "Antenatal" },
-  { label: "Maternity", value: "Maternity" },
-  { label: "Lab Test", value: "Lab Test" },
-  { label: "ANT", value: "ANT" },
+  { label: "Consulta General", value: "General Consultation" },
+  { label: "Control General", value: "General Check Up" },
+  { label: "Prenatal", value: "Antenatal" },
+  { label: "Maternidad", value: "Maternity" },
+  { label: "Laboratorio", value: "Lab Test" },
 ];
 
 interface PatientInfoProps {

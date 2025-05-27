@@ -15,11 +15,6 @@ import { User } from "@prisma/client";
 
 const columns = [
   {
-    header: "user ID",
-    key: "id",
-    className: "hidden lg:table-cell",
-  },
-  {
     header: "Name",
     key: "name",
   },
@@ -67,10 +62,6 @@ const ManageUsers = async (props: SearchParamsProps) => {
       key={item.id}
       className="border-b border-gray-200 dark:border-gray-800 even:bg-blue-50  dark:even:bg-transparent text-sm hover:bg-slate-50 dark:hover:bg-gray-900 cursor-pointer"
     >
-      <td className="hidden lg:table-cell items-center gap-2 md:gap-4 ">
-        {item.id}
-      </td>
-
       <td className="table-cell py-2 xl:py-4">{item?.name}</td>
       <td className="hidden md:table-cell">{item?.email}</td>
       <td className="table-cell capitalize">{item?.role}</td>

@@ -11,7 +11,7 @@ interface PaginationProps {
   totalPages: number;
   limit: number;
 }
-export const Pagination = ({
+export const  Pagination = ({
   totalPages,
   currentPage,
   totalRecords,

@@ -100,7 +100,7 @@ export async function createNewAppointment(data: any) {
       data: {
         ...validatedData!,
         patient_id: data?.patient_id!,
-        appointment_date: new Date(validatedData?.appointment_date!),
+        appointment_date: new Date(validatedData?.appointment_date!) 
       },
     });
 
